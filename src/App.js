@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+//import Login from './components/auth/Login';
+//import Register from './components/auth/Register';
+//import Dashboard from './components/Dashboard';
+//import Logout from './components/auth/Logout'; // Import the Logout component
+//import NotFound from './components/NotFound';
+//import Contact from './components/Contact'; // Adjust the path if needed
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    return (
+        <Router>
+            <Navbar /> {/* Add the Navbar here */}
+            <Routes>
+                <Route path="/" element={<Home />} />
+                
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;

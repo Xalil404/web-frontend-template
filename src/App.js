@@ -8,9 +8,9 @@ import Home from './components/Home';
 //import Login from './components/auth/Login';
 //import Register from './components/auth/Register';
 //import Dashboard from './components/Dashboard';
-//import Logout from './components/auth/Logout'; // Import the Logout component
-//import NotFound from './components/NotFound';
-//import Contact from './components/Contact'; // Adjust the path if needed
+//import Logout from './components/auth/Logout'; 
+import NotFound from './components/NotFound';
+import Contact from './components/Contact'; 
 
 
 const App = () => {
@@ -19,7 +19,8 @@ const App = () => {
             <Navbar /> {/* Add the Navbar here */}
             <Routes>
                 <Route path="/" element={<Home />} />
-                
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} /> {/* Fallback route for 404 Page */}
             </Routes>
         </Router>
     );

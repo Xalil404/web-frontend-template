@@ -5,15 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-//import Login from './components/auth/Login';
-//import Register from './components/auth/Register';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import PasswordResetRequest from './components/auth/PasswordResetRequest';
+import PasswordResetConfirm from './components/auth/PasswordResetConfirm';
 import Dashboard from './components/Dashboard';
-//import Logout from './components/auth/Logout'; 
+import Logout from './components/auth/Logout'; 
 import NotFound from './components/NotFound';
 import Contact from './components/Contact'; 
-import Profile from './components/Profile'; 
-import FirebaseLogin from "./components/auth/FirebaseLogin";
-import FirebaseRegister from "./components/auth/FirebaseRegister";
 import PrivateRoute from './components/auth/PrivateRoute';
 
 
@@ -24,8 +23,10 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/firebaselogin" element={<FirebaseLogin />} /> {/* Use FirebaseLogin component */}
-                <Route path="/firebaseregister" element={<FirebaseRegister />} /> {/* Use FirebaseRegister component */}
+                <Route path="/login" element={<Login />} /> 
+                <Route path="/register" element={<Register />} /> 
+                <Route path="/auth/password/reset" element={<PasswordResetRequest />} />
+                <Route path="/auth/password/reset/confirm/:uid/:token" element={<PasswordResetConfirm />} />
                 <Route path="*" element={<NotFound />} /> {/* Fallback route for 404 Page */}
                 <Route 
                     path="/dashboard" 
@@ -36,10 +37,10 @@ const App = () => {
                     } 
                 /> 
                 <Route 
-                    path="/profile" 
+                    path="/logout" 
                     element={
                         <PrivateRoute>
-                            <Profile />
+                            <Logout />
                         </PrivateRoute>
                     } 
                 /> 

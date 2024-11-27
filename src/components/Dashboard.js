@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom'; // Make sure to import routing components
-import Profile from './Profile'; // Import your Profile component
-
+import { useNavigate } from 'react-router-dom'; // Use useNavigate for redirection
 
 const Dashboard = () => {
-    const [activeTab, setActiveTab] = useState('dashboard'); // State to track active tab
+    const [activeTab, setActiveTab] = useState('dashboard');
+    const [username, setUsername] = useState('John Doe'); // Replace with the actual username from the logged-in user
+    const navigate = useNavigate(); // Use useNavigate hook for redirection
+
+    // Function to handle logout
+    const handleLogout = () => {
+        // Logic to log out the user (e.g., clear authentication tokens, etc.)
+        // After logging out, redirect to the logout confirmation page
+        navigate('/logout'); // Use navigate to redirect to the logout confirmation page
+    };
 
     const renderContent = () => {
         switch (activeTab) {
@@ -13,7 +20,7 @@ const Dashboard = () => {
             case 'tasks':
                 return <h2>Here are your Tasks</h2>;
             case 'profile':
-                return <Profile />;
+                return <h2>Here is your Profile</h2>;
             default:
                 return <h2>Welcome to the Dashboard</h2>;
         }
@@ -50,6 +57,17 @@ const Dashboard = () => {
                         <span className="nav-link">Profile</span>
                     </li>
                 </ul>
+
+                {/* User info and logout section */}
+                <div className="user-info mt-4 p-3">
+                    <h5>Welcome, {username}</h5>
+                    <button 
+                        className="btn btn-danger w-100" 
+                        onClick={handleLogout}
+                    >
+                        Log Out
+                    </button>
+                </div>
             </nav>
 
             {/* Main Content Area */}

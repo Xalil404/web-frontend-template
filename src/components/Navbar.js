@@ -53,7 +53,7 @@ const Header = () => {
                                 <Link
                                     className="nav-link-a d-none d-lg-block text-dark"
                                     style={{ marginRight: '10px', textDecoration: 'none' }}
-                                    to="/firebaselogin"
+                                    to="/login"
                                 >
                                     Sign in
                                 </Link>
@@ -75,7 +75,7 @@ const Header = () => {
                                         marginRight: '10px',
                                         marginLeft: '5px',
                                     }}
-                                    to="/firebaseregister"
+                                    to="/register"
                                 >
                                     Get Started
                                 </Link>

@@ -1,29 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { auth } from '../../firebase/firebase'; // Adjust the import path for your Firebase setup
+// PrivateRoute.js
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom'; // useLocation to get current location
 
 const PrivateRoute = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const location = useLocation();
+    const isAuthenticated = localStorage.getItem('authToken'); // Assuming auth token is stored in localStorage
+    const location = useLocation(); // Get the current location of the user
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
-        });
-        return () => unsubscribe(); // Clean up the listener
-    }, []);
-
-    if (loading) {
-        return <div>Loading...</div>;
+    if (!isAuthenticated) {
+        // Redirect to login if not authenticated
+        return <Navigate to="/" state={{ from: location }} replace />;
     }
 
-    if (user) {
-        return children;
-    }
-
-    return <Navigate to="/" state={{ from: location }} replace />;
+    // If authenticated, render the children (private route content)
+    return children;
 };
 
 export default PrivateRoute;

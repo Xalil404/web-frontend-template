@@ -19,7 +19,7 @@ import PrivateRoute from './components/auth/PrivateRoute';
 const App = () => {
     return (
         <Router>
-            <Navbar /> {/* Add the Navbar here */}
+            <Navbar /> {/* Add the Navbar here ! */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/contact" element={<Contact />} />
